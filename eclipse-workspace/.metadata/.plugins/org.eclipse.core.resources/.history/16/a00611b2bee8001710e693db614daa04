@@ -1,0 +1,32 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class muruga {
+
+
+		public static void main(String[] args) throws InterruptedException {
+			// TODO Auto-generated method stub	System.setProperty("webdriver.gecko.driver","/usr/bin/geckodriver");
+			// TODO Auto-generated method stub
+			WebDriver driver = new FirefoxDriver();
+		String a = "https://www.youtube.com/";
+		
+			
+	        //Launch the Online Store 
+			driver.get(a);
+			driver.findElement(By.id("identifierId")).sendKeys("gopikingston.dy");
+			driver.findElement(By.linkText("sign in")).click();
+			
+			
+			Thread.sleep(2000);
+			driver.navigate().back();
+			
+			
+	 
+	        // Print a Log In message to the screen
+	        
+			
+
+	}
+
+}

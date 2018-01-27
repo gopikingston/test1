@@ -1,0 +1,26 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class muruga {
+
+
+		public static void main(String[] args) {
+			// TODO Auto-generated method stub	System.setProperty("webdriver.gecko.driver","/usr/bin/geckodriver");
+			// TODO Auto-generated method stub
+			WebDriver driver = new FirefoxDriver();
+		String a = "https://skylight.urjanet.net/login";
+		driver.findElement(By.id("username")).sendKeys("gopinath.rajendran");
+			
+	        //Launch the Online Store 
+			driver.get(a);
+			
+			
+	 
+	        // Print a Log In message to the screen
+	        System.out.println("Successfully opened the website www.Store.Demoqa.com");
+			
+
+	}
+
+}

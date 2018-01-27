@@ -1,0 +1,31 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class muruga {
+
+
+		public static void main(String[] args) throws InterruptedException {
+			// TODO Auto-generated method stub	System.setProperty("webdriver.gecko.driver","/usr/bin/geckodriver");
+			// TODO Auto-generated method stub
+			WebDriver driver = new FirefoxDriver();
+		String a = "https://www.google.com/search?client=ubuntu&channel=fs&q=g&ie=utf-8&oe=utf-8";
+		
+			
+	        //Launch the Online Store 
+			driver.get(a);
+			if(driver.getPageSource().contains("trouble")) {
+				System.out.println("yes");
+			}
+			else
+			{
+				System.out.println("no");
+			}
+		
+
+		
+			// TODO Auto-generated method stub
+	
+		}
+
+}

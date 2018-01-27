@@ -1,0 +1,38 @@
+package fun;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+public class Sea {
+	public static <WebElements> void main(String[] args) throws IOException, EncryptedDocumentException, InvalidFormatException, InterruptedException {
+		// TODO Auto-generated method stub
+System.setProperty("webdriver.chrome.driver", "/home/gopinath/Downloads//chromedriver");
+        ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-infobars");
+		Scanner scn =new Scanner(System.in);
+		String a = scn.nextLine();
+		WebDriver driver=new ChromeDriver(options);
+		
+		driver.get("https://jira.urjanet.net/browse/"+a);
+		driver.findElement(By.id("login-form-username")).sendKeys("gopinath.rajendran");
+		driver.findElement(By.id("login-form-password")).sendKeys("Gopikingston.3");
+		driver.findElement(By.name("login")).click();
+		driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+		driver.findElement(By.name("add-comment")).click();
+		
+}}

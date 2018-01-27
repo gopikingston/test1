@@ -1,0 +1,140 @@
+package fun;
+
+import java.util.Scanner;
+import java.util.TreeSet;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Navigation {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+    System.setProperty("webdriver.chrome.driver", "/home/gopinath/Downloads//chromedriver");
+	Scanner scn =new Scanner(System.in);
+	System.out.println("enter the customer name");
+	String cus= scn.nextLine();
+	String tick =scn.nextLine();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("disable-infobars");
+			WebDriver driver=new ChromeDriver(options);
+			driver.get("https://jira.urjanet.net/browse/"+tick);
+			driver.findElement(By.id("login-form-username")).sendKeys("gopinath.rajendran");
+			driver.findElement(By.id("login-form-password")).sendKeys("Gopikingston.3");
+			driver.findElement(By.name("login")).click();
+			driver.findElement(By.cssSelector("#attachment_thumbnails > li:nth-child(1) > dl > dt > a")).click();
+		String a = driver.findElement(By.tagName("body")).getText();
+		//System.out.println(a);
+    String f = a;
+    getclose();
+    driver.get("https://skylight.urjanet.net/login");
+    driver.findElement(By.id("username")).sendKeys("gopinath.rajendran");
+	driver.findElement(By.id("password")).sendKeys("Gopikingston.3");
+	driver.findElement(By.id("signin")).click();
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
+	driver.findElement(By.cssSelector("#searchBarFirstRow > button:nth-child(3) > span.ui-button-icon-primary.ui-icon.ui-icon-triangle-1-s")).click();
+	driver.findElement(By.cssSelector("body > ul:nth-child(16) > li:nth-child(4) > a")).click();
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
+	//Thread.sleep(20000);
+	driver.findElement(By.xpath("//*[@id=\"searchBarFirstRow\"]/button[2]/span[1]")).click();
+    driver.findElement(By.xpath("//*[@id=\"searchBarFirstRow\"]/input[2]")).sendKeys(cus);
+	Scanner scan = new Scanner(f);
+	scan.useDelimiter("[^A-Za-z]+");
+	Scanner scan1 = new Scanner(f);
+	scan1.useDelimiter("[^A-Za-z]+");
+	int c = 0;
+	int d =0;
+	while(scan1.hasNextLine()) {	                  //loop condition to initialize array length
+		Pattern p = Pattern.compile("\\.0 (.*?) \\[ERROR]");//Griping condition
+	Matcher m1 = p.matcher(scan1.nextLine());
+ while (m1.find()) {
+	 c++;
+ }}
+	//System.out.println(c);
+	String[] channel=new String[c];
+	while(scan.hasNextLine()) {	
+	Pattern p = Pattern.compile("\\.0 (.*?) \\[ERROR]");//Griping condition
+    Matcher m = p.matcher(scan.nextLine());
+while (m.find()) {
+    String group = m.group();//passing a matching value to group string
+	String ouy = group.replaceAll("\\s", "").replaceAll("\\[ERROR]", "").replaceAll("\\.0", "");
+	channel[d]=ouy;
+	d++;
+	}//loop endings
+    }//loop end
+	TreeSet<String> tree =new TreeSet<>();
+	for(int i=0;i<channel.length;i++)
+	{
+		tree.add(channel[i]);
+	}
+	String[] result = new String[c];
+	int str = 0;
+	for(String out:tree)
+	{
+		//System.out.println(out);
+		driver.findElement(By.cssSelector("#searchBarFirstRow > input.ui-autocomplete-input.ui-widget.ui-widget-content.ui-corner-left.accessChannelCombo")).sendKeys(out);
+		driver.findElement(By.cssSelector("#gobutton > span")).click();
+		driver.findElement(By.name("AccessChannelName")).sendKeys(out);
+		//driver.manage().timeouts().implicitlyWait(8, TimeUnit.MINUTES);
+		//Thread.sleep(150000);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr/td[1]/img")).click();
+	//String url=	driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[2]/td/a[1]")).getText();
+	String url1 = driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[2]/td/a[2]")).getText();
+		//System.out.println(out+"-> "+url);
+		result[str] = url1;
+		str++;
+	}
+	getclose();
+	driver.get("https://jira.urjanet.net/browse/"+tick);
+	driver.findElement(By.id("login-form-username")).sendKeys("gopinath.rajendran");
+	driver.findElement(By.id("login-form-password")).sendKeys("Gopikingston.3");
+	driver.findElement(By.name("login")).click();
+	driver.findElement(By.xpath("//*[@id=\"footer-comment-button\"]/span[2]")).click();
+	for(int pnt= 0;pnt<=result.length;pnt++) {
+	driver.findElement(By.name("comment")).sendKeys(result[pnt]);
+	System.out.println(result[pnt]);
+	}
+	
+
+	
+
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			/*driver.findElement(By.id("username")).sendKeys("gopinath.rajendran");
+			driver.findElement(By.id("password")).sendKeys("Gopikingston.3");
+			driver.findElement(By.id("signin")).click();
+			driver.findElement(By.cssSelector("#searchBarFirstRow > button:nth-child(3) > span.ui-button-icon-primary.ui-icon.ui-icon-triangle-1-s")).click();
+			driver.findElement(By.cssSelector("body > ul:nth-child(16) > li:nth-child(4) > a")).click();
+			Thread.sleep(15000);
+			driver.findElement(By.xpath("//*[@id=\"searchBarFirstRow\"]/input[2]")).click();
+			driver.findElement(By.xpath("//*[@id=\"searchBarFirstRow\"]/input[2]")).sendKeys(cus);
+			driver.findElement(By.cssSelector("#searchBarFirstRow > input.ui-autocomplete-input.ui-widget.ui-widget-content.ui-corner-left.accessChannelCombo")).sendKeys(accs);
+			driver.findElement(By.cssSelector("#gobutton > span")).click();
+			driver.findElement(By.name("AccessChannelName")).sendKeys(accs);
+			Thread.sleep(15000);
+			driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr/td[3]/a")).click();*/
+
+	}
+
+	private static void getclose() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
